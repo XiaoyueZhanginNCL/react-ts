@@ -13,8 +13,41 @@ type ChannelRes={
 
 
 //请求频道列表
-export function fetchChannelList(){
+export function fetchChannelListAPI(){
     return http.request<ResType<ChannelRes>>({
         url:'/channels'
+    })
+}
+
+//获取文章列表
+type ListItem={
+    "art_id": string,
+    "title": string,
+    "aut_id": string,
+    "comm_count": number,
+    "pubdate": string,
+    "aut_name": string,
+    "is_top": number,
+    "cover": {
+      "type": number,
+      "images": string[]
+    }
+  }
+
+export type ListRes={
+    results:ListItem[],
+    pre_timestamp:string
+}
+
+//对请求参数做类型限定
+type ResParams={
+    channel_id:string,
+    timestamp:string
+}
+
+export function fetchListAPI(params:ResParams){
+    return http.request<ResType<ListRes>>({
+        url:'/articles',
+        params
     })
 }
