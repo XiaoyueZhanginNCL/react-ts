@@ -3,7 +3,11 @@ import { Image, List } from 'antd-mobile'
 import { ListRes, fetchListAPI } from '@/apis/list'
 import { useEffect, useState } from 'react'
 
-const HomeList = () => {
+type Props={
+    channelID:string
+}
+
+const HomeList = (props:Props) => {
 
     const [listRes,setListRes]=useState<ListRes>({
         results:[],
@@ -14,7 +18,7 @@ const HomeList = () => {
     useEffect(()=>{
         async function getList(){
             const res=await fetchListAPI({
-                channel_id:'0',
+                channel_id:props.channelID,
                 timestamp:''+new Date().getTime()
             })
 

@@ -22,7 +22,7 @@ const Home=()=>{
         <Tabs>
             {channels?.map(item => 
                 <Tabs.Tab title={item.name} key={item.id}>
-                    <HomeList />
+                    <HomeList channelID={''+item.id}/>
                 </Tabs.Tab> 
             )}
           
