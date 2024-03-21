@@ -19,7 +19,8 @@ const Home=()=>{
 
     return <div>
         <div className='tabContainer'>
-        <Tabs>
+            {/* 默认激活的数据：channel id为0的推荐 */}
+        <Tabs defaultActiveKey={'0'}>
             {channels?.map(item => 
                 <Tabs.Tab title={item.name} key={item.id}>
                     <div className='listContainer'>
